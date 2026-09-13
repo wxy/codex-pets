@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/wxy/crt-monitor-codex-pet/blob/main/schemas/pet.schema.json",
+  "$id": "https://github.com/wxy/codex-pets/blob/main/schemas/pet.schema.json",
   "title": "Codex Pet v2 manifest",
   "type": "object",
   "required": ["id", "displayName", "description", "spriteVersionNumber", "spritesheetPath"],

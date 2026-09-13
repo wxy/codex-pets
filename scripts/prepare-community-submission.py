@@ -59,7 +59,7 @@ submission = {
     "canonical_key": f"original/{handle}/{pet_id}",
     "tags": entry["community"]["tags"],
     "source_type": "original",
-    "source_url": f"https://github.com/{raw_handle}/crt-monitor-codex-pet/tree/main/{entry['path']}",
+    "source_url": f"https://github.com/{raw_handle}/codex-pets/tree/main/{entry['path']}",
     "license": entry["artworkLicense"],
     "preview_image": f"../../assets/previews/{slug}/gifs/idle.gif",
     "codex_install": {

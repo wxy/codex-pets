@@ -4,9 +4,16 @@ import argparse, json, re, shutil
 
 ROOT = Path(__file__).resolve().parents[1]
 
-parser = argparse.ArgumentParser(description="Prepare Awesome Codex Pet submission folder.")
+parser = argparse.ArgumentParser(description="Prepare an Awesome Codex Pet submission folder.")
 parser.add_argument("handle", help="GitHub handle / author slug")
+parser.add_argument("--pet", default="crt-monitor", help="Pet id from catalog.json")
 parser.add_argument("--author", help="Display author name; defaults to handle")
+parser.add_argument(
+    "--output-dir",
+    type=Path,
+    default=ROOT / "community" / "generated",
+    help="Parent directory for the generated submission",
+)
 args = parser.parse_args()
 
 raw_handle = args.handle.strip()
@@ -15,19 +22,27 @@ if not handle:
     raise SystemExit("Invalid handle")
 
 author = args.author or raw_handle
-slug = f"crt-monitor--{handle}"
-dest = ROOT / "community" / "generated" / slug
+catalog = json.loads((ROOT / "catalog.json").read_text(encoding="utf-8"))
+entry = next((item for item in catalog["pets"] if item["id"] == args.pet), None)
+if entry is None:
+    raise SystemExit(f"Unknown pet id: {args.pet}")
+
+pet_dir = ROOT / entry["path"]
+runtime_manifest = json.loads((pet_dir / "pet.json").read_text(encoding="utf-8"))
+pet_id = runtime_manifest["id"]
+slug = f"{pet_id}--{handle}"
+dest = args.output_dir.expanduser().resolve() / slug
 
 if dest.exists():
     shutil.rmtree(dest)
 dest.mkdir(parents=True)
 
-shutil.copy2(ROOT / "pet" / "spritesheet.webp", dest / "spritesheet.webp")
+shutil.copy2(pet_dir / "spritesheet.webp", dest / "spritesheet.webp")
 
 pet = {
     "id": slug,
-    "displayName": "CRT Monitor",
-    "description": "A tiny retro CRT monitor that keeps an eye on your code.",
+    "displayName": runtime_manifest["displayName"],
+    "description": runtime_manifest["description"],
     "spriteVersionNumber": 2,
     "spritesheetPath": "spritesheet.webp"
 }
@@ -35,20 +50,17 @@ pet = {
 
 submission = {
     "slug": slug,
-    "pet_slug": "crt-monitor",
+    "pet_slug": pet_id,
     "author_slug": handle,
-    "name": "CRT Monitor",
-    "localized_names": {
-        "en": "CRT Monitor",
-        "zh": "CRT 显示器"
-    },
+    "name": runtime_manifest["displayName"],
+    "localized_names": entry["community"]["localizedNames"],
     "author": author,
-    "primary_category": "Robots",
-    "canonical_key": f"original/{handle}/crt-monitor",
-    "tags": ["robot", "retro-computing", "crt", "coding"],
+    "primary_category": entry["community"]["primaryCategory"],
+    "canonical_key": f"original/{handle}/{pet_id}",
+    "tags": entry["community"]["tags"],
     "source_type": "original",
-    "source_url": f"https://github.com/{raw_handle}/crt-monitor-codex-pet",
-    "license": "CC BY 4.0",
+    "source_url": f"https://github.com/{raw_handle}/codex-pets/tree/main/{entry['path']}",
+    "license": entry["artworkLicense"],
     "preview_image": f"../../assets/previews/{slug}/gifs/idle.gif",
     "codex_install": {
         "pet_json": "pet.json",

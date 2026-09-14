@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "pets": [
+    {
+      "id": "crt-monitor",
+      "displayName": "CRT Monitor",
+      "path": "pets/crt-monitor",
+      "artworkLicense": "CC BY 4.0",
+      "status": "stable",
+      "community": {
+        "localizedNames": {
+          "en": "CRT Monitor",
+          "zh": "CRT 显示器"
+        },
+        "primaryCategory": "Robots",
+        "tags": ["robot", "retro-computing", "crt", "coding"]
+      }
+    }
+  ]
+}

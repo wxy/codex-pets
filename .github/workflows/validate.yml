@@ -13,4 +13,4 @@ jobs:
         with:
           python-version: "3.x"
       - run: python -m pip install Pillow
-      - run: python scripts/validate.py
+      - run: python scripts/validate.py --all

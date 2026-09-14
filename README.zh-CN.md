@@ -1,69 +1,67 @@
 <div align="center">
 
-# CRT Monitor
+# Codex Pet 宠物集合
 
-### 一台会盯着你代码看的复古小显示器。
+### 在同一个仓库中维护的原创 Codex 桌面伙伴。
 
 简体中文 · [English](README.md)
 
-![CRT Monitor 设计图](assets/source-design.png)
+![CRT Monitor 设计图](pets/crt-monitor/assets/source-design.png)
 
-**Codex Pet v2** · **88 帧** · **透明 WebP** · **macOS / Windows / Linux**
+**Codex Pet v2** · **支持多宠物** · **macOS / Windows / Linux**
 
 </div>
 
-CRT Monitor 是为 Codex 设计的原创 Q 版 CRT 桌面伙伴。暖米色机身、深绿玻璃屏幕、发光像素表情和两只小圆脚，把编码状态变成一只带着复古计算机气质的小角色。
+这里统一维护原创 Codex Pet 的运行包、原始美术、预览图、审计结果和维护工具。每只宠物都完整存放在 `pets/<pet-id>/`，并在 `catalog.json` 中登记。
 
-当 Codex 工作、等待、Review 或遇到错误时，CRT Monitor 会通过终端活动、状态符号、错误诊断、代码行和方向表情做出对应反应。
+## 宠物
+
+| 宠物 | 状态 | 预览 |
+| --- | --- | --- |
+| [CRT Monitor](pets/crt-monitor/README.md) | 稳定 · 已审计 88 帧 | [8×11 Contact sheet](pets/crt-monitor/assets/preview-grid.png) |
+
+机器人头宠物仍处于设计阶段，目前尚未加入运行时目录。
 
 ## 安装
 
-### macOS / Linux
+先在 [catalog.json](catalog.json) 查看宠物 id，再安装指定宠物：
 
 ```bash
-./scripts/install.sh
+./scripts/install.sh crt-monitor
 ```
 
-### Windows PowerShell
+Windows PowerShell：
 
 ```powershell
-./scripts/install.ps1
+./scripts/install.ps1 -PetId crt-monitor
 ```
 
-也可以手动安装：
+重启 Codex，然后在 **Settings → Appearance → Pets** 中选择宠物。不传 id 时仍默认安装 CRT Monitor，以兼容原有用法。
+
+## 验证
 
 ```bash
-mkdir -p ~/.codex/pets/crt-monitor
-cp pet/pet.json pet/spritesheet.webp ~/.codex/pets/crt-monitor/
+python3 scripts/validate.py --all
 ```
 
-重启 Codex，然后在 **Settings → Appearance → Pets** 中选择 **CRT Monitor**。
+为指定宠物生成原生分辨率 Contact sheet 和逐帧审计：
 
-## Pet 格式
+```bash
+python3 scripts/generate-preview-and-audit.py crt-monitor
+```
 
-| | |
-| --- | --- |
-| Runtime | Codex Pet v2 |
-| Atlas | `1536 × 2288` WebP |
-| 网格 | `8 × 11` |
-| 单帧 | `192 × 208` |
-| 动画 | 9 个标准状态 + 16 个观察方向 |
-| 背景 | 透明 |
+新增宠物前请阅读[仓库结构说明](docs/ARCHITECTURE.md)。
 
-原生分辨率的 [8×11 Contact sheet](assets/preview-grid.png) 直接从运行时 atlas 生成、未经缩放。[逐帧审计](assets/frame-audit.md) 记录了全部 88 个解码单元格和 8 列的哈希。
+## 兼容性
 
-## 参与贡献
-
-欢迎改进动画连续性、屏幕表情、无障碍表现、文档、安装脚本以及兼容的视觉变体。详细说明见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+原有根目录 `pet/` 运行文件和部分 `assets/` 素材会继续作为 CRT Monitor 的逐字节兼容镜像保留，因此外部链接（包括现有 Awesome Codex Pet 条目）不会失效。新宠物只使用规范的 `pets/<pet-id>/` 结构。
 
 ## 许可证
 
-代码和脚本采用 [MIT License](LICENSE)。
-
-CRT Monitor 的角色设计和美术资源采用 [CC BY 4.0](LICENSE-ARTWORK)。
+代码和脚本采用 [MIT License](LICENSE)。每只宠物单独声明美术许可证；CRT Monitor 使用 [CC BY 4.0](pets/crt-monitor/LICENSE-ARTWORK)。
 
 ---
 
 <div align="center">
-<sub>CRT Monitor 是独立的社区 Pet 项目，与 OpenAI 无隶属或官方背书关系。</sub>
+<sub>这是独立的社区项目，与 OpenAI 无隶属或官方背书关系。</sub>
 </div>

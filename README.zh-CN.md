@@ -19,7 +19,7 @@
 | 宠物 | 状态 | 预览 |
 | --- | --- | --- |
 | [CRT Monitor](pets/crt-monitor/README.md) | 稳定 · 已审计 88 帧 | [8×11 Contact sheet](pets/crt-monitor/assets/preview-grid.png) |
-| [AI Pulse](pets/ai-pulse/README.md) | 稳定 · 已审计 88 帧 | [8×11 Contact sheet](pets/ai-pulse/assets/preview-grid.png) |
+| [AI Pulse](pets/ai-pulse/README.md) | 稳定 · 已审计 88 格 | [8×11 Contact sheet](pets/ai-pulse/assets/preview-grid.png) |
 
 ## 安装
 

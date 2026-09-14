@@ -11,7 +11,7 @@ electric pulses rather than solid limbs.
 - Codex Pet v2
 - `1536×2288` transparent WebP atlas
 - `8×11` grid with `192×208` cells
-- 88 animated frames
+- 74 populated runtime cells plus 14 required transparent padding cells
 - Idle, sleep, exaggerated running, waving, jumping, handstand, fatigue,
   lying down, drinking, listening to music, working, reviewing, and 16 look directions
 

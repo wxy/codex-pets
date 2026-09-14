@@ -3,12 +3,14 @@
 - Atlas: `1536×2288` WebP
 - Grid: `8×11` (`88` frames)
 - Cell: `192×208` RGBA after decoding
-- Atlas SHA-256: `ec550560cde05124de53cd071916bf79bd44895af7974e152d6b0c7b1e42a76c`
+- Atlas SHA-256: `3729fa7413a97df4bd3cf4cfa82f341e4d5f5ed249c5b0772278312213d791c3`
 - Method: SHA-256 over every decoded RGBA cell; SHA-256 over each complete 11-frame column.
 
 ## Duplicate result
 
-No exact duplicate decoded frames were found among the 88 cells.
+Exact duplicate decoded frames were found:
+
+- `30d4da31db85877f0102e0d56b9559e9d4400fde83c253a19c7c1988b4ed0c64`: R1C8, R4C5, R4C6, R4C7, R4C8, R5C6, R5C7, R5C8, R7C7, R7C8, R8C7, R8C8, R9C7, R9C8
 
 No complete duplicate columns were found.
 
@@ -16,25 +18,25 @@ No complete duplicate columns were found.
 
 | Row | C1 | C2 | C3 | C4 | C5 | C6 | C7 | C8 |
 | ---: | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | `1eed6f2a3dc2` | `a79d0199c0e4` | `5a630b9c40bb` | `e756e9a36a14` | `75614ea0313f` | `1699b0ee2899` | `b706cf42c730` | `14b6d5a147f7` |
-| 2 | `8995e7d46faa` | `cab8f6b1713e` | `f5bde595cee2` | `2ffb53e64ec4` | `ffa241f43c17` | `434bd60d2841` | `d051de6d393a` | `91e7c67d3aa1` |
-| 3 | `55a4c42ab569` | `451941ac2e5f` | `235a86578c52` | `4c9310052ddb` | `5f40128d7a78` | `d5ce590166a9` | `587e5e8ddd56` | `ecf1bb599a88` |
-| 4 | `112674cb899a` | `29d336145f1b` | `4457dd32a7fa` | `dc65edc31418` | `1cb203d4ca2a` | `dc59305c36b7` | `1dcc55346b9d` | `9f1c71885e71` |
-| 5 | `19fa874d78a4` | `412d748d2c48` | `dd771a248f83` | `c895df7234db` | `696c761dd56b` | `613fddbb98a5` | `a2cab9b6ee10` | `39dfe6fd7c97` |
-| 6 | `1cabb4ca88f2` | `a14b1ba3f085` | `6ffcc1d65d79` | `a8628b295aad` | `6dcbd701b905` | `84c8bc9835c7` | `9aa163114ea9` | `f32e863c77b8` |
-| 7 | `f31d4be17b9f` | `5370aa6fdde8` | `3ab51634493e` | `03310d7f9857` | `11039516f0d3` | `9e576aa850ec` | `ec180160b603` | `2a3394655103` |
-| 8 | `0735f90e62d2` | `ef4d70ffd32d` | `45d184229b24` | `d5b7e8186412` | `f3c218359a8a` | `2d20e099428c` | `0bf4b2fd8ee5` | `ff61b2e0a1d4` |
-| 9 | `ce0b27dd6cea` | `8a7f4d4f5252` | `c29327800269` | `3fee5bf330ec` | `57e060b60c18` | `117a13714f91` | `307a988d1b1f` | `053d4f3e84ed` |
-| 10 | `7fc615e87016` | `37ff1bc195d7` | `48cb102cab58` | `62167c280d3a` | `fa0b0f3a91ff` | `b4b355cd7b29` | `99d87043031f` | `ef2f49a64e47` |
-| 11 | `c83612af1f86` | `a3f2fed74a24` | `f138a2861c1d` | `9f2b61262bc0` | `7ceceb9e9b11` | `2c257a5e5015` | `03a7e5aa0cbd` | `f03f1ff177e8` |
+| 1 | `0182695425db` | `d69cdcc77c59` | `462691094bd3` | `70d7b5326d0f` | `d81d32a827d0` | `19f28af774ce` | `46f6d750e65d` | `30d4da31db85` |
+| 2 | `204ba227e679` | `025a58adce24` | `2681b244b762` | `209e953f593a` | `f016cd81c619` | `8095a1545e70` | `769aa4df3271` | `9a9d28d2860a` |
+| 3 | `7f7cc5cfaf81` | `516db1bd6be6` | `147baca2010d` | `332d2fed94cf` | `211f64f47649` | `10bf680ca6d4` | `048c975bd46a` | `f7c120d0b42c` |
+| 4 | `4a14b6445843` | `cbd3bd7b986e` | `d855ddd1d5f0` | `bff7586b3f64` | `30d4da31db85` | `30d4da31db85` | `30d4da31db85` | `30d4da31db85` |
+| 5 | `8048b7314884` | `59a454a30f87` | `2a3c6f0385c5` | `ff3fc8294cef` | `f897c7ffae7a` | `30d4da31db85` | `30d4da31db85` | `30d4da31db85` |
+| 6 | `c20636e778d7` | `46409bfe788e` | `1dc042ece144` | `e01f07cb9ad5` | `b8dda33cb1c8` | `d47d7a48bca9` | `1aebc8aa09ac` | `87b2ad985b0e` |
+| 7 | `49a635217a2f` | `d96e34967f72` | `5b7011d4a6be` | `7dd53233d79f` | `4a29c22c08ea` | `be26fa89c089` | `30d4da31db85` | `30d4da31db85` |
+| 8 | `c3e4d9eddff4` | `45600134a302` | `2a3d1d03f379` | `958071f1b82b` | `277d4da11075` | `c5a0565dcc53` | `30d4da31db85` | `30d4da31db85` |
+| 9 | `8b26da456eb6` | `59da0655edf2` | `dfce0116578a` | `371c90bcadd7` | `106c3123e920` | `baaa8798d0f1` | `30d4da31db85` | `30d4da31db85` |
+| 10 | `9b8d0578eb3b` | `ca350499e934` | `0387b68e5126` | `559ffcf30f96` | `c6e48336b0cc` | `d4e18a334e59` | `0c24373dc575` | `158c4eee0953` |
+| 11 | `bef3546e7ede` | `aa66e56bd9b2` | `1ea388e90daf` | `747d307451ca` | `4a46f951e689` | `dbea64caafbb` | `099b57b6addb` | `c11dd0b102d3` |
 
 ## Per-column hashes
 
-- C1: `837fe37b6dedc97436043960fe17a4de30e0a916d837e1f674b1d81a9c995c96`
-- C2: `4a1613559a3277c5b850f3d1563ff77beebc2ba024187f5996ed8ccfb940621c`
-- C3: `57a8a6ac7e0ec6e344ebaaaf22a89bc53d91d0b059e38e138da5aa5cdc1a9ca9`
-- C4: `82fefbed644908e02f75f00deaaf93be32e205fc9c381202413ca8e4c3db6de0`
-- C5: `73730eb970aef6dced394639934417099b1a7772026c7e783e9ede2f6b430024`
-- C6: `7e7616c20b4d6e687f7ccdaf2306ce949e98230b722122a9b01ec0dc21f3d0cc`
-- C7: `47e5e817d4d3618ce5d1e0ef17d646743c308673ce8de4e2d667af200bfa365d`
-- C8: `39ced579adfc800897892f8dbc1b915533cc5d4a3794a7726848dc93669a1721`
+- C1: `0351c606bbb915f23fa25d4b579744128b112e9651432cffb1efbc84d6d07248`
+- C2: `5f6a3e6d185362af35af6fa698c234c12f1710af8f9b527b67e725c3199d5fa8`
+- C3: `a35e8cabdc0e0e70469ff74dbc1763367fe7215af0a0cb098aa65a6723fb408b`
+- C4: `7ebbce8fd0aaae93f93d5e678de781f4abb350b3f0b861203f60d92d8270ff20`
+- C5: `7d9daf1102161bb1cd22005b548396842d51382769f7303b3641f8eec69fd953`
+- C6: `bf82de4c03ae9bd74b3d88b1d7f124ae37af0b842bb95382fae7d9f963b29dc9`
+- C7: `490333ee3371d88efff0de43e718acdb1c160d17c25d13edceec3890cda1605c`
+- C8: `ea5860b054530eadd699746335d6dfac4bd0489c884a4b8dfa3f542e6990f036`

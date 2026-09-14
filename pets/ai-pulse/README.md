@@ -24,4 +24,8 @@ Install from the repository root:
 The [contact sheet](assets/preview-grid.png) and
 [frame audit](assets/frame-audit.md) are generated at native resolution.
 The [runtime checksum](assets/spritesheet.sha256) pins the exact atlas.
+The [frame map](assets/frame-map.md) documents the 74 current/extended frames
+and 14 deliberately authored auxiliary frames. Every atlas cell remains
+populated; auxiliary frames continue the action semantics of their row so they
+can be adapted if a future runtime supports complete eight-frame playback.
 Artwork is currently distributed under the terms in [LICENSE-ARTWORK](LICENSE-ARTWORK).

@@ -20,4 +20,6 @@ Install from the repository root:
 The [contact sheet](assets/preview-grid.png) is generated at native resolution.
 The [frame audit](assets/frame-audit.md) records every decoded cell and column
 hash. The [runtime checksum](assets/spritesheet.sha256) pins the exact atlas.
+Confirmed original artwork, the corrected full design board, and the lossless
+RGBA atlas master are preserved in the [source archive](assets/source/README.md).
 Artwork is licensed under [CC BY 4.0](LICENSE-ARTWORK).

@@ -13,7 +13,12 @@ pets/<pet-id>/
     ├── source-design.png
     ├── preview-grid.png
     ├── frame-audit.md
-    └── spritesheet.sha256
+    ├── spritesheet.sha256
+    └── source/
+        ├── README.md
+        ├── SHA256SUMS
+        ├── runtime-atlas-rgba.png
+        └── <pet-specific original artwork>
 ```
 
 `catalog.json` is the machine-readable index. Add a pet there only after its
@@ -29,6 +34,27 @@ those exact paths.
 The validator checks these mirrors byte-for-byte against
 `pets/crt-monitor/`. Do not edit one copy without updating the other. New pets
 do not need root-level mirrors.
+
+## Source asset preservation
+
+The files under the repository-level `assets/readme/` directory and each pet's
+`assets/preview-grid.png` are presentation artifacts. Never use them as the
+source for another artwork edit.
+
+Each pet keeps its irreplaceable original inputs and a native-resolution,
+lossless RGBA atlas under `pets/<pet-id>/assets/source/`. The source directory
+also contains a checksum manifest and provenance notes. The runtime WebP
+remains the installable artifact; the RGBA PNG is the editing master whose
+decoded pixels must match that WebP until an intentional artwork revision is
+made.
+
+When artwork changes:
+
+1. Start from an original input or `runtime-atlas-rgba.png`, never a README card.
+2. Preserve the previous source assets in Git history and update provenance.
+3. Export `spritesheet.webp` at the required native dimensions.
+4. Regenerate `preview-grid.png`, `frame-audit.md`, and `spritesheet.sha256`.
+5. Refresh `assets/source/SHA256SUMS` and run the full validator.
 
 ## Adding a pet
 

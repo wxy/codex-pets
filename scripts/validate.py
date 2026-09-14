@@ -17,6 +17,7 @@ COLS, ROWS = 8, 11
 CELL_W, CELL_H = 192, 208
 EXPECTED_SIZE = (COLS * CELL_W, ROWS * CELL_H)
 ID_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+SHA256_PATTERN = re.compile(r"^[0-9a-f]{64}$")
 
 CRT_COMPATIBILITY_FILES = {
     ROOT / "pet/pet.json": ROOT / "pets/crt-monitor/pet.json",
@@ -43,6 +44,78 @@ def load_catalog() -> tuple[dict, list[str]]:
     if not isinstance(pets, list) or not pets:
         errors.append("catalog.json pets must be a non-empty array")
     return catalog, errors
+
+
+def validate_source_assets(pet_dir: Path, pet_id: str, runtime_rgba: Image.Image | None) -> list[str]:
+    errors: list[str] = []
+    source_dir = pet_dir / "assets/source"
+    manifest_path = source_dir / "SHA256SUMS"
+    notes_path = source_dir / "README.md"
+    master_path = source_dir / "runtime-atlas-rgba.png"
+
+    for required_path in (source_dir, manifest_path, notes_path, master_path):
+        if not required_path.exists():
+            errors.append(f"missing {required_path.relative_to(pet_dir)}")
+    if not manifest_path.is_file():
+        return errors
+
+    listed_files: set[str] = set()
+    for line_number, line in enumerate(manifest_path.read_text(encoding="utf-8").splitlines(), 1):
+        if not line.strip():
+            continue
+        parts = line.split(maxsplit=1)
+        if len(parts) != 2 or not SHA256_PATTERN.fullmatch(parts[0]):
+            errors.append(f"assets/source/SHA256SUMS:{line_number}: invalid entry")
+            continue
+        expected_digest, filename = parts
+        filename = filename.strip()
+        if Path(filename).name != filename:
+            errors.append(f"assets/source/SHA256SUMS:{line_number}: filename must be local")
+            continue
+        listed_files.add(filename)
+        asset_path = source_dir / filename
+        if not asset_path.is_file():
+            errors.append(f"assets/source/SHA256SUMS:{line_number}: missing {filename}")
+        elif sha256(asset_path) != expected_digest:
+            errors.append(f"assets/source/SHA256SUMS:{line_number}: checksum mismatch for {filename}")
+
+    actual_pngs = {path.name for path in source_dir.glob("*.png")}
+    if listed_files != actual_pngs:
+        errors.append(
+            "assets/source/SHA256SUMS coverage differs: "
+            f"listed={sorted(listed_files)}, actual={sorted(actual_pngs)}"
+        )
+
+    if master_path.is_file():
+        try:
+            with Image.open(master_path) as source_master:
+                master_format = source_master.format
+                master_size = source_master.size
+                master_rgba = source_master.convert("RGBA")
+            if master_format != "PNG":
+                errors.append(f"assets/source/runtime-atlas-rgba format: expected PNG, got {master_format}")
+            if master_size != EXPECTED_SIZE:
+                errors.append(
+                    "assets/source/runtime-atlas-rgba size: "
+                    f"expected {EXPECTED_SIZE[0]}x{EXPECTED_SIZE[1]}, "
+                    f"got {master_size[0]}x{master_size[1]}"
+                )
+            if runtime_rgba is not None and master_rgba.tobytes() != runtime_rgba.tobytes():
+                errors.append("assets/source/runtime-atlas-rgba decoded pixels differ from spritesheet.webp")
+        except Exception as exc:
+            errors.append(f"assets/source/runtime-atlas-rgba unreadable: {exc}")
+
+    design_mirror_name = {
+        "crt-monitor": "design-board-final-8col.png",
+        "ai-pulse": "logo-original.png",
+    }.get(pet_id)
+    if design_mirror_name:
+        design_path = pet_dir / "assets/source-design.png"
+        archived_design_path = source_dir / design_mirror_name
+        if archived_design_path.is_file() and sha256(archived_design_path) != sha256(design_path):
+            errors.append(f"assets/source/{design_mirror_name} differs from assets/source-design.png")
+
+    return errors
 
 
 def validate_pet(entry: dict) -> list[str]:
@@ -150,6 +223,8 @@ def validate_pet(entry: dict) -> list[str]:
                     "frames within 2 px of a cell edge: "
                     + ", ".join(f"r{r}c{c} margins={m}" for r, c, m in touching)
                 )
+
+    errors.extend(validate_source_assets(pet_dir, pet_id, im))
 
     return errors
 

@@ -19,21 +19,20 @@
 | 宠物 | 状态 | 预览 |
 | --- | --- | --- |
 | [CRT Monitor](pets/crt-monitor/README.md) | 稳定 · 已审计 88 帧 | [8×11 Contact sheet](pets/crt-monitor/assets/preview-grid.png) |
-
-机器人头宠物仍处于设计阶段，目前尚未加入运行时目录。
+| [AI Pulse](pets/ai-pulse/README.md) | 稳定 · 已审计 88 帧 | [8×11 Contact sheet](pets/ai-pulse/assets/preview-grid.png) |
 
 ## 安装
 
 先在 [catalog.json](catalog.json) 查看宠物 id，再安装指定宠物：
 
 ```bash
-./scripts/install.sh crt-monitor
+./scripts/install.sh <pet-id>
 ```
 
 Windows PowerShell：
 
 ```powershell
-./scripts/install.ps1 -PetId crt-monitor
+./scripts/install.ps1 -PetId <pet-id>
 ```
 
 重启 Codex，然后在 **Settings → Appearance → Pets** 中选择宠物。不传 id 时仍默认安装 CRT Monitor，以兼容原有用法。
@@ -58,7 +57,7 @@ python3 scripts/generate-preview-and-audit.py crt-monitor
 
 ## 许可证
 
-代码和脚本采用 [MIT License](LICENSE)。每只宠物单独声明美术许可证；CRT Monitor 使用 [CC BY 4.0](pets/crt-monitor/LICENSE-ARTWORK)。
+代码和脚本采用 [MIT License](LICENSE)。每只宠物单独声明美术许可证，详见对应宠物目录中的许可证文件。
 
 ---
 

@@ -21,22 +21,20 @@ self-contained under `pets/<pet-id>/` and registered in `catalog.json`.
 | Pet | Status | Preview |
 | --- | --- | --- |
 | [CRT Monitor](pets/crt-monitor/README.md) | Stable · 88 audited frames | [8×11 contact sheet](pets/crt-monitor/assets/preview-grid.png) |
-
-The robot-head pet is still in design and is not included in the runtime
-catalog yet.
+| [AI Pulse](pets/ai-pulse/README.md) | Stable · 88 audited frames | [8×11 contact sheet](pets/ai-pulse/assets/preview-grid.png) |
 
 ## Install
 
 List available pet ids in [catalog.json](catalog.json), then install one:
 
 ```bash
-./scripts/install.sh crt-monitor
+./scripts/install.sh <pet-id>
 ```
 
 On Windows PowerShell:
 
 ```powershell
-./scripts/install.ps1 -PetId crt-monitor
+./scripts/install.ps1 -PetId <pet-id>
 ```
 
 Restart Codex, then choose the pet in **Settings → Appearance → Pets**.
@@ -66,7 +64,7 @@ the canonical `pets/<pet-id>/` layout.
 ## License
 
 Code and scripts are licensed under the [MIT License](LICENSE). Each pet carries
-its own artwork license; CRT Monitor uses [CC BY 4.0](pets/crt-monitor/LICENSE-ARTWORK).
+its own artwork license; see the license file inside each pet directory.
 
 ---
 

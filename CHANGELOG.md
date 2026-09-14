@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Replaced the abandoned experimental Robot Head entry with the production AI Pulse pet.
+- Added AI Pulse's 88-frame electric floating-limb animation atlas and source artwork.
 - Added the canonical `pets/<pet-id>/` collection layout and `catalog.json`.
 - Generalized validation, preview generation, installers, and community packaging for multiple pets.
 - Kept CRT Monitor's original root paths as validated byte-identical compatibility mirrors.

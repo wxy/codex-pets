@@ -21,7 +21,7 @@ self-contained under `pets/<pet-id>/` and registered in `catalog.json`.
 | Pet | Status | Preview |
 | --- | --- | --- |
 | [CRT Monitor](pets/crt-monitor/README.md) | Stable · 88 audited frames | [8×11 contact sheet](pets/crt-monitor/assets/preview-grid.png) |
-| [AI Pulse](pets/ai-pulse/README.md) | Stable · 88 audited cells | [8×11 contact sheet](pets/ai-pulse/assets/preview-grid.png) |
+| [AI Pulse](pets/ai-pulse/README.md) | Stable · 88 audited frames | [8×11 contact sheet](pets/ai-pulse/assets/preview-grid.png) |
 
 ## Install
 

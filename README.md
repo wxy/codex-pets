@@ -57,6 +57,10 @@ Generate a selected pet's native-resolution contact sheet and frame audit:
 python3 scripts/generate-preview-and-audit.py crt-monitor
 ```
 
+Each pet also preserves confirmed original inputs and a lossless RGBA editing
+master under `pets/<pet-id>/assets/source/`. README cards and generated previews
+are presentation assets and must not be used as future editing sources.
+
 See [the repository architecture](docs/ARCHITECTURE.md) before adding a pet.
 
 ## Compatibility

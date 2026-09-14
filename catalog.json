@@ -13,7 +13,33 @@
           "zh": "CRT 显示器"
         },
         "primaryCategory": "Robots",
-        "tags": ["robot", "retro-computing", "crt", "coding"]
+        "tags": [
+          "robot",
+          "retro-computing",
+          "crt",
+          "coding"
+        ]
+      }
+    },
+    {
+      "id": "ai-pulse",
+      "displayName": "AI Pulse",
+      "path": "pets/ai-pulse",
+      "artworkLicense": "All rights reserved",
+      "status": "stable",
+      "community": {
+        "localizedNames": {
+          "en": "AI Pulse",
+          "zh": "AI Pulse"
+        },
+        "primaryCategory": "Robots",
+        "tags": [
+          "robot",
+          "ai-pulse",
+          "electric",
+          "floating-limbs",
+          "coding"
+        ]
       }
     }
   ]

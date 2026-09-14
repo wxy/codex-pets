@@ -54,6 +54,9 @@ python3 scripts/validate.py --all
 python3 scripts/generate-preview-and-audit.py crt-monitor
 ```
 
+每只宠物还会在 `pets/<pet-id>/assets/source/` 中保存已确认的原始输入和无损
+RGBA 编辑母版。README 卡片和生成的预览图只用于展示，不能作为以后继续修改的源素材。
+
 新增宠物前请阅读[仓库结构说明](docs/ARCHITECTURE.md)。
 
 ## 兼容性
